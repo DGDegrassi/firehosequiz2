@@ -5,13 +5,20 @@ class QuizzesController < ApplicationController
     @quizdisplay = Quiz.all
   end
 
-  def create
-    @quizdisplay = Quiz.create
-    redirect_to root_path(quiz_params)
+  def new
+
   end
 
+  def create
+    @quiz = Quiz.create(quiz_params)
+    redirect_to root_path
+  end
+
+
+
   private
+
   def quiz_params
-    params.require(:quiz).permit(:type)
+    params.require(:quiz).permit(:name)
   end
 end
